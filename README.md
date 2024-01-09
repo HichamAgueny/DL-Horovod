@@ -167,7 +167,7 @@ time srun --cpu-bind=mask_cpu:$MYMASKS \
  ```
 
 ### Singularity container
-This description follows the guide provided by Samuel. Building Horovod-TensorFlow image can be built on the top 
+This description follows the guide provided by Samuel (AMD). Building Horovod-TensorFlow image can be built on the top 
 
 ```
 Bootstrap: localimage
