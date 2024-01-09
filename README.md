@@ -1,7 +1,7 @@
 # Distributed Deep Learning with Horovod
 This course is part of the [NLDL2024](https://www.nldl.org/program/winter-school) winter school at UiT - The Arctic University of Norway. It is about distributed deep learning with Horovod. 
 
-## Setup Horovod-TensorFlow-rocm
+## Setup Horovod-TensorFlow on Cray system
 Here is a step-by-step guide on installing Horovod-TensorFlow-rocm:
 
 ### In a virtual environment
@@ -305,3 +305,11 @@ time srun --cpu-bind=mask_cpu:$MYMASKS \
      $MyContainer \
      $MyJob/myscript.sh 2>/dev/null && tee my.log
 ```
+
+## Horovod timeline for Profiling
+
+Enabling profiling can be done by simply specifying this environment variable 
+```
+export HOROVOD_TIMELINE=./horovod_timeline.json
+```
+
