@@ -312,4 +312,4 @@ Enabling profiling can be done by simply specifying this environment variable
 ```
 export HOROVOD_TIMELINE=./horovod_timeline.json
 ```
-
+The file `horovod_timeline.json` can be viewed using a trace viewer e.g. https://ui.perfetto.dev/
