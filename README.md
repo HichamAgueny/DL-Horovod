@@ -1,5 +1,5 @@
 # Distributed Deep Learning with Horovod
-This course is part of the [NLDL2024](https://www.nldl.org/program/winter-school) winter school at UiT - The Arctic University of Norway. It is about distributed deep learning with Horovod. 
+This course is part of the [NLDL2024](https://www.nldl.org/program/winter-school) winter school at UiT - The Arctic University of Norway. It is about distributed deep learning with Horovod-TensorFlow. More examples can be found [here](https://github.com/horovod/horovod/tree/master/horovod). 
 
 ## Setup Horovod-TensorFlow on Cray system
 Here is a step-by-step guide on installing Horovod-TensorFlow-rocm:
