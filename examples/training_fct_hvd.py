@@ -48,12 +48,8 @@ def train_hvd(learning_rate,batch_size,epochs):
     # Scale the learning rate with the number of GPUs (total nbr of processes)
     #When partioning the data according to the nbr of processes, the batch size on each
     #process is the same as it would be in a single process (non-distributed training)
-    #Here each worker processes a smaller subset of the data, but combining all processes
-    #results in a larger batch size. 
-    #Ex. Let's consider a batch size of 64 on each process and that hvd.size()=4. 
-    #Each process processes its unique subset of data, but collectively
-    #the effective batch size is 64x4=256 data points (larger than a single-process)
-    #Thus, the learnin rate should be scaled to account for the increased eefective batch size.
+    #Here each worker processes a smaller subset of the data.
+    #the effective batch size is Bxnbr-of-GPUs
 
     optimizer = keras.optimizers.Adadelta(learning_rate=learning_rate *
                                           hvd.size())
@@ -64,10 +60,13 @@ def train_hvd(learning_rate,batch_size,epochs):
     #Horovod's DistributedOptimizer ensures that gradient updates from different workers are correctly aggregated and applied to the model. 
     optimizer = hvd.DistributedOptimizer(optimizer)
 
-    # Compile the model    
+    # Compile the model
+    # Specify `experimental_run_tf_function=False` to ensure TensorFlow
+    # uses hvd.DistributedOptimizer() to compute gradients.
     model.compile(optimizer=optimizer,
                   loss='categorical_crossentropy',
-                  metrics=['accuracy'])
+                  metrics=['accuracy'],
+                 experimental_run_tf_function=False)
 
     # Create a callback to broadcast the initial variable states from rank 0 to all other processes.
     # This is required to ensure consistent initialization of all workers when training is started with random weights or restored from a checkpoint.
