@@ -1,6 +1,6 @@
 # Specify training parameters
 batch_size = 256
-epochs = 1
+epochs = 5
 lr_single_node = 0.1  # learning rate for single node code
 #num_classes=10
 
