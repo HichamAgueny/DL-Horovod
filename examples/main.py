@@ -1,7 +1,7 @@
 # Specify training parameters
 num_proc = 1  # equal to numExecutors
 batch_size = 128
-epochs = 1
+epochs = 5
 lr_single_node = 0.1  # learning rate for single node code
 #num_classes=10
 
